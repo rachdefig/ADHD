@@ -29,7 +29,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -54,16 +54,29 @@ header h1 {
     margin-top: 0.25rem;
 }
 
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
 section {
     background: var(--surface);
     border-radius: var(--radius);
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
     border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make brain dump span full width */
+section.brain-dump {
+    grid-column: 1 / -1;
 }
 
 section h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -71,7 +84,7 @@ section h2 {
 }
 
 .hint {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     font-weight: normal;
 }
@@ -85,13 +98,14 @@ section h2 {
 
 .capture-input input {
     flex: 1;
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.75rem;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--bg);
     color: var(--text);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     transition: border-color 0.2s;
+    min-width: 0;
 }
 
 .capture-input input:focus {
@@ -100,14 +114,15 @@ section h2 {
 }
 
 .capture-input button {
-    padding: 0.75rem 1.25rem;
+    padding: 0.6rem 1rem;
     background: var(--accent);
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: background 0.2s;
+    flex-shrink: 0;
 }
 
 .capture-input button:hover {
@@ -117,15 +132,18 @@ section h2 {
 /* Task list styles */
 .task-list {
     list-style: none;
+    flex: 1;
+    overflow-y: auto;
+    max-height: 300px;
 }
 
 .task-list li {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 0.75rem;
+    gap: 0.6rem;
+    padding: 0.5rem 0.6rem;
     border-radius: 8px;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
     transition: background 0.2s;
 }
 
@@ -139,14 +157,17 @@ section h2 {
 }
 
 .task-list li input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     accent-color: var(--accent);
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .task-list li span {
     flex: 1;
+    font-size: 0.9rem;
+    word-break: break-word;
 }
 
 .task-list li .delete-btn {
@@ -154,11 +175,12 @@ section h2 {
     border: none;
     color: var(--text-muted);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0.25rem;
     border-radius: 4px;
     opacity: 0;
     transition: opacity 0.2s, color 0.2s;
+    flex-shrink: 0;
 }
 
 .task-list li:hover .delete-btn {
@@ -171,10 +193,19 @@ section h2 {
 
 /* Progress bar */
 .progress-bar {
-    height: 8px;
+    height: 6px;
     background: var(--bg);
     border-radius: 4px;
-    margin-top: 1rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    overflow: visible;
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--bg);
+    border-radius: 4px;
+    margin-top: 0.75rem;
     overflow: hidden;
 }
 
@@ -192,9 +223,9 @@ section h2 {
 
 .progress-text {
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 }
 
 /* Projects */
@@ -202,7 +233,7 @@ section h2 {
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     overflow: hidden;
 }
 
@@ -210,7 +241,7 @@ section h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.75rem;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -220,7 +251,7 @@ section h2 {
 }
 
 .project-header h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
@@ -234,7 +265,7 @@ section h2 {
 }
 
 .project-body {
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.75rem;
     border-top: 1px solid var(--border);
     display: none;
 }
@@ -244,13 +275,13 @@ section h2 {
 }
 
 .project-body .capture-input input {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
 }
 
 .project-body .capture-input button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.9rem;
 }
 
 .project-actions {
@@ -277,13 +308,13 @@ section h2 {
 /* Brain dump */
 .brain-dump textarea {
     width: 100%;
-    min-height: 150px;
+    min-height: 120px;
     padding: 1rem;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--text);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-family: inherit;
     resize: vertical;
     line-height: 1.8;
@@ -296,6 +327,12 @@ section h2 {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 600px) {
     body {
         padding: 1rem 0.5rem;
@@ -303,6 +340,10 @@ section h2 {
 
     header h1 {
         font-size: 1.5rem;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
     }
 
     section {
