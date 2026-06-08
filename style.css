@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #1a1b2e;
+    --surface: #252641;
+    --surface-hover: #2f3055;
+    --accent: #7c6ff7;
+    --accent-light: #a78bfa;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --danger: #f87171;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #374151;
+    --radius: 12px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+.date {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.sync-status {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+section {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hint {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: normal;
+}
+
+/* Input styles */
+.capture-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.capture-input input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.capture-input input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.capture-input button {
+    padding: 0.75rem 1.25rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.capture-input button:hover {
+    background: var(--accent-light);
+}
+
+/* Task list styles */
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0.4rem;
+    transition: background 0.2s;
+}
+
+.task-list li:hover {
+    background: var(--surface-hover);
+}
+
+.task-list li.completed span {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-list li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.task-list li span {
+    flex: 1;
+}
+
+.task-list li .delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.task-list li:hover .delete-btn {
+    opacity: 1;
+}
+
+.task-list li .delete-btn:hover {
+    color: var(--danger);
+}
+
+/* Progress bar */
+.progress-bar {
+    height: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.habit-fill {
+    background: linear-gradient(90deg, var(--success), #6ee7b7);
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+/* Projects */
+.project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.project-header:hover {
+    background: var(--surface-hover);
+}
+
+.project-header h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.project-header .toggle {
+    color: var(--text-muted);
+    transition: transform 0.2s;
+}
+
+.project-header .toggle.open {
+    transform: rotate(90deg);
+}
+
+.project-body {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border);
+    display: none;
+}
+
+.project-body.open {
+    display: block;
+}
+
+.project-body .capture-input input {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.project-body .capture-input button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.project-actions .delete-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: color 0.2s;
+}
+
+.project-actions .delete-btn:hover {
+    color: var(--danger);
+}
+
+/* Brain dump */
+.brain-dump textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+    line-height: 1.8;
+    transition: border-color 0.2s;
+}
+
+.brain-dump textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+}

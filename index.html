@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Our Dashboard</h1>
+            <p class="date" id="currentDate"></p>
+            <p class="sync-status" id="syncStatus">🟢 Synced</p>
+        </header>
+
+        <!-- Quick Capture -->
+        <section class="quick-capture">
+            <h2>⚡ Quick Capture</h2>
+            <div class="capture-input">
+                <input type="text" id="quickInput" placeholder="What's on your mind? Hit Enter to save..." autofocus>
+                <button id="quickAddBtn">+</button>
+            </div>
+            <ul id="captureList" class="task-list"></ul>
+        </section>
+
+        <!-- Today's Focus -->
+        <section class="today-focus">
+            <h2>🎯 Today's Focus <span class="hint">(max 5 — keep it doable)</span></h2>
+            <div class="capture-input">
+                <input type="text" id="focusInput" placeholder="Add a focus item...">
+                <button id="focusAddBtn">+</button>
+            </div>
+            <ul id="focusList" class="task-list"></ul>
+            <div class="progress-bar">
+                <div class="progress-fill" id="focusProgress"></div>
+            </div>
+            <p class="progress-text" id="focusProgressText"></p>
+        </section>
+
+        <!-- Projects -->
+        <section class="projects">
+            <h2>📁 Projects</h2>
+            <div class="capture-input">
+                <input type="text" id="projectInput" placeholder="New project name...">
+                <button id="projectAddBtn">+</button>
+            </div>
+            <div id="projectList"></div>
+        </section>
+
+        <!-- Daily Habits -->
+        <section class="habits">
+            <h2>✅ Daily Habits</h2>
+            <div class="capture-input">
+                <input type="text" id="habitInput" placeholder="Add a daily habit...">
+                <button id="habitAddBtn">+</button>
+            </div>
+            <ul id="habitList" class="task-list"></ul>
+            <div class="progress-bar">
+                <div class="progress-fill habit-fill" id="habitProgress"></div>
+            </div>
+            <p class="progress-text" id="habitProgressText"></p>
+        </section>
+
+        <!-- Brain Dump -->
+        <section class="brain-dump">
+            <h2>💭 Brain Dump</h2>
+            <textarea id="brainDump" placeholder="Just write. No structure needed. Get it out of your head..."></textarea>
+        </section>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
